@@ -4,39 +4,6 @@
     <meta charset="UTF-8">
     <title>Train Model | MNIST</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <style>
-        .flex-box {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .form-box {
-            flex: 1;
-            padding: 20px;
-        }
-
-        .image-box {
-            flex: 1;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .log-output {
-            white-space: pre-wrap;
-            background-color: #f0f0f0;
-            border: 1px solid #ccc;
-            padding: 1em;
-            margin-top: 1em;
-            max-height: 400px;
-            overflow-y: auto;
-            font-family: monospace;
-        }
-
-        .button {
-            margin: 0.5em 0;
-        }
-    </style>
 </head>
 <body>
 <main class="container">
@@ -57,6 +24,7 @@
             <div class="log-output">{{ log_output }}</div>
             {% endif %}
 
+            <br/>
             <button class="button back-button" onclick="window.location.href='{{ url_for('index') }}'">Back to Home</button>
         </div>
     </div>

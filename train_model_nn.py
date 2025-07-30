@@ -15,11 +15,10 @@ from tensorflow.keras.datasets import fashion_mnist
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint, ReduceLROnPlateau
 ####################
 from model_config import ModelConfig
-
-
-######## Load data
 config = ModelConfig(model_type="nn")
 
+
+######## Load data and train model
 print("--- Building and Training Neural Network (NN) with Callbacks ---")
 (x_train, y_train), (x_test, y_test) = fashion_mnist.load_data()
 x_train = x_train.astype('float32') / 255.0

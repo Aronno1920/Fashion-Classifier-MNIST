@@ -8,6 +8,105 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
 <body>
+<main class="container">
+    <div class="form-box">
+        <div style="display: flex; align-items: center;">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" height="60" style="margin-right: 20px;">
+            <h1>Fashion Classifier (MNIST)</h1>
+        </div>
+
+        <!-- Predict form -->
+        <form method="POST" action="{{ url_for('predict') }}" enctype="multipart/form-data">
+            <input
+                type="file"
+                name="image"
+                id="imageInput"
+                accept="image/*"
+                required
+                onchange="previewImage(event)"
+            />
+            <br />
+            <button type="submit" class="button">Predict</button>
+        </form>
+        <br/>
+        <!-- Train model form -->
+        <form action="{{ url_for('train_model') }}" method="POST">
+            <button type="submit" class="button">Train Model</button>
+        </form>
+
+
+        {% if model_message.nn %}
+            <div class="warning">{{ model_message.nn }}</div>
+        {% endif %}
+        {% if model_message.cnn %}
+            <div class="warning">{{ model_message.cnn }}</div>
+        {% endif %}
+    </div>
+
+    <div class="image-box">
+        {% if image_data %}
+            <img id="preview" src="data:image/png;base64,{{ image_data }}" alt="Image Preview" />
+        {% else %}
+            <img id="preview" src="#" alt="Image Preview" style="display: none;" />
+        {% endif %}
+    </div>
+</main>
+
+<main class="container">
+    {% if prediction %}
+        <div class="prediction-box">
+            <h2>Predictions</h2>
+            <div style="display: flex; justify-content: space-around;">
+                <!-- NN Predictions -->
+                <div>
+                    <h3>Neural Network (NN)</h3>
+                    <div class="confidence">1. {{ prediction.nn[0] }} — {{ prediction.nn[1] }}%</div>
+                    <div class="confidence">2. {{ prediction.nn[2] }} — {{ prediction.nn[3] }}%</div>
+                    <div class="confidence">3. {{ prediction.nn[4] }} — {{ prediction.nn[5] }}%</div>
+                </div>
+
+                <!-- CNN Predictions -->
+                <div>
+                    <h3>Convolutional Neural Network (CNN)</h3>
+                    <div class="confidence">1. {{ prediction.cnn[0] }} — {{ prediction.cnn[1] }}%</div>
+                    <div class="confidence">2. {{ prediction.cnn[2] }} — {{ prediction.cnn[3] }}%</div>
+                    <div class="confidence">3. {{ prediction.cnn[4] }} — {{ prediction.cnn[5] }}%</div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+</main>
+
+<footer style="text-align: center; margin-top: 2em;">
+    <p>🛠️ Built with <strong>TensorFlow</strong>, <strong>Flask</strong>, and <strong>PyTorch</strong></p>
+</footer>
+
+<script>
+    function previewImage(event) {
+        const reader = new FileReader();
+        reader.onload = function () {
+            const output = document.getElementById('preview');
+            output.src = reader.result;
+            output.style.display = 'block';
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
+</body>
+</html>
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fashion Classifier | MNIST</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
     <main class="container">
         <div class="form-box">
             <img src="{{ url_for('static', filename='logo.png') }}" class="logo" alt="Fashion Icon" />
@@ -31,13 +130,27 @@
             </form>
 
             {% if prediction %}
-            <div class="prediction-box">
-                <h2>Prediction: {{ prediction[0] }}</h2>
-                <div class="confidence">1. {{ prediction[0] }} — {{ prediction[1] }}%</div>
-                <div class="confidence">2. {{ prediction[2] }} — {{ prediction[3] }}%</div>
-                <div class="confidence">3. {{ prediction[4] }} — {{ prediction[5] }}%</div>
-            </div>
+                <div class="prediction-box">
+                    <h2>Predictions:</h2>
+
+                    <div style="display: flex; justify-content: space-around;">
+                        <div>
+                            <h3>Neural Network (NN)</h3>
+                            <div class="confidence">1. {{ prediction.nn[0] }} — {{ prediction.nn[1] }}%</div>
+                            <div class="confidence">2. {{ prediction.nn[2] }} — {{ prediction.nn[3] }}%</div>
+                            <div class="confidence">3. {{ prediction.nn[4] }} — {{ prediction.nn[5] }}%</div>
+                        </div>
+
+                        <div>
+                            <h3>Convolutional Neural Network (CNN)</h3>
+                            <div class="confidence">1. {{ prediction.cnn[0] }} — {{ prediction.cnn[1] }}%</div>
+                            <div class="confidence">2. {{ prediction.cnn[2] }} — {{ prediction.cnn[3] }}%</div>
+                            <div class="confidence">3. {{ prediction.cnn[4] }} — {{ prediction.cnn[5] }}%</div>
+                        </div>
+                    </div>
+                </div>
             {% endif %}
+
         </div>
 
         <div class="image-box">
@@ -65,4 +178,4 @@
         }
     </script>
 </body>
-</html>
+</html> -->
