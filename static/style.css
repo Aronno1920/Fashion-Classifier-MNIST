@@ -47,7 +47,7 @@ input[type="file"] {
     cursor: pointer;
 }
 
-button {
+.button {
     background-color: #4B0082;
     color: white;
     border: none;
@@ -59,8 +59,17 @@ button {
     font-family: inherit;
 }
 
-button:hover {
+.button:hover {
     background-color: #5e2ea3;
+}
+
+select {
+    padding: 10px;
+    width: 100%;
+    border: 2px solid #4B0082;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-size: 16px;
 }
 
 .image-box img {

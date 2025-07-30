@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Train Model | MNIST</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .flex-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .form-box {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .image-box {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .log-output {
+            white-space: pre-wrap;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            padding: 1em;
+            margin-top: 1em;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: monospace;
+        }
+
+        .button {
+            margin: 0.5em 0;
+        }
+    </style>
+</head>
+<body>
+<main class="container">
+    <div class="flex-box">
+        <div class="form-box">
+            <div style="display: flex; align-items: center;">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" height="60" style="margin-right: 20px;">
+                <h1>Train Model</h1>
+            </div>
+
+            <form method="POST">
+                <button type="submit" name="model_type" value="nn" class="button">Train Neural Network (NN)</button>
+                <button type="submit" name="model_type" value="cnn" class="button">Train Convolutional Neural Network (CNN)</button>
+            </form>
+
+            {% if log_output %}
+            <h3>Training Log:</h3>
+            <div class="log-output">{{ log_output }}</div>
+            {% endif %}
+
+            <button class="button back-button" onclick="window.location.href='{{ url_for('index') }}'">Back to Home</button>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>⚙️ Train your model with <strong>Neural Network</strong> or <strong>Convolutional Neural Network</strong></p>
+</footer>
+</body>
+</html>

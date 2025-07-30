@@ -1,41 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fashion MNIST Classifier</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fashion Classifier | MNIST</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 </head>
 <body>
     <main class="container">
-            <div class="form-box">
-                <img src="{{ url_for('static', filename='logo.png') }}" class="logo" alt="Fashion Icon">
-                <h1>Fashion Classifier (MNIST)</h1>
-                <form method="POST" enctype="multipart/form-data">
-                    <input type="file" name="image" id="imageInput" accept="image/*" required onchange="previewImage(event)">
-                    <br>
-                    <button type="submit">Predict</button>
-                </form>
+        <div class="form-box">
+            <img src="{{ url_for('static', filename='logo.png') }}" class="logo" alt="Fashion Icon" />
+            <h1>Fashion Classifier (MNIST)</h1>
 
-                {% if prediction %}
-                    <div class="prediction-box">
-                        <h2>Prediction: {{ prediction[0] }}</h2>
-                        <div class="confidence">1. {{ prediction[0] }} — {{ prediction[1] }}%</div>
-                        <div class="confidence">2. {{ prediction[2] }} — {{ prediction[3] }}%</div>
-                        <div class="confidence">3. {{ prediction[4] }} — {{ prediction[5] }}%</div>
-                    </div>
-                {% endif %}
-            </div>
+            <form method="POST" enctype="multipart/form-data">
+                <input
+                    type="file"
+                    name="image"
+                    id="imageInput"
+                    accept="image/*"
+                    required
+                    onchange="previewImage(event)"
+                />
+                <br />
+                <button type="submit" class="button">Predict</button>
+            </form>
+            <br/>
+            <form action="{{ url_for('train_model') }}" method="POST">
+                <button type="submit" class="button">Train Model</button>
+            </form>
 
-            <div class="image-box">
-                {% if image_data %}
-                    <img id="preview" src="data:image/png;base64,{{ image_data }}" alt="Image Preview" />
-                {% else %}
-                    <img id="preview" src="#" alt="Image Preview" style="display: none;" />
-                {% endif %}
+            {% if prediction %}
+            <div class="prediction-box">
+                <h2>Prediction: {{ prediction[0] }}</h2>
+                <div class="confidence">1. {{ prediction[0] }} — {{ prediction[1] }}%</div>
+                <div class="confidence">2. {{ prediction[2] }} — {{ prediction[3] }}%</div>
+                <div class="confidence">3. {{ prediction[4] }} — {{ prediction[5] }}%</div>
             </div>
+            {% endif %}
+        </div>
+
+        <div class="image-box">
+            {% if image_data %}
+            <img id="preview" src="data:image/png;base64,{{ image_data }}" alt="Image Preview" />
+            {% else %}
+            <img id="preview" src="#" alt="Image Preview" style="display: none;" />
+            {% endif %}
+        </div>
     </main>
 
     <footer>
@@ -48,7 +59,7 @@
             reader.onload = function () {
                 const output = document.getElementById('preview');
                 output.src = reader.result;
-                output.style.display = "block";
+                output.style.display = 'block';
             };
             reader.readAsDataURL(event.target.files[0]);
         }
