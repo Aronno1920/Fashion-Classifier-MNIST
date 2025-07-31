@@ -133,50 +133,6 @@ def predict():
     except Exception as e:
         print("Prediction error:", str(e))  # Log to console for debugging
         return render_template("index.html", error=f"Prediction error: {str(e)}", prediction=None, image_data=None, model_message=model_message)
-
-
-# Click for predict (GET)
-# @app.route("/predict", methods=["POST"])
-# def predict():
-#     if "image" not in request.files:
-#         return render_template("index.html", error="No image uploaded.", prediction=None, image_data=None, model_message=model_message)
-
-#     file = request.files["image"]
-#     if file.filename == "":
-#         return render_template("index.html", error="No file selected.", prediction=None, image_data=None, model_message=model_message)
-
-#     try:
-#         # Encode image for preview
-#         file.stream.seek(0)
-#         image_data = base64.b64encode(file.read()).decode("utf-8")
-
-#         image = Image.open(file.stream)
-#         processed_image = preprocess_image(image)
-
-#         prediction = {"nn": [], "cnn": []}
-
-#         if nn_model:
-#             print("------------ nn_model --------------")
-
-#             nn_probs = nn_model.predict(processed_image)[0]
-#             top3 = nn_probs.argsort()[-3:][::-1]
-
-#             for i in top3:
-#                 print(f"Class Name -> ", [class_names[i], round(nn_probs[i] * 100, 2)])
-#                 prediction["nn"].extend([class_names[i], round(nn_probs[i] * 100, 2)])
-
-#         if cnn_model:
-#             print("------------ cnn_model --------------")
-#             cnn_probs = cnn_model.predict(processed_image)[0]
-#             top3 = cnn_probs.argsort()[-3:][::-1]
-#             for i in top3:
-#                 print(f"Class Name -> ", [class_names[i], round(cnn_probs[i] * 100, 2)])
-#                 prediction["cnn"].extend([class_names[i], round(cnn_probs[i] * 100, 2)])
-
-#         return render_template("index.html", prediction=prediction, image_data=image_data, model_message=model_message)
-
-#     except Exception as e:
-#         return render_template("index.html", error=f"Prediction error: {str(e)}", prediction=None, image_data=None, model_message=model_message)
 #######################################################
 
 
