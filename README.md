@@ -97,7 +97,7 @@ Open your browser: http://127.0.0.1:5000
 
 ✍️ Author
 
-Selim Ahmed
-📫 [Connect on LinkedIn](https://www.linkedin.com/in/aronno1920/)
+Selim Ahmed <br/>
+📫 [Connect on LinkedIn](https://www.linkedin.com/in/aronno1920/)<br/>
 🌐 [GitHub Profile](https://github.com/aronno1920)
 
