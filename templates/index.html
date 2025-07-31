@@ -17,14 +17,7 @@
 
         <!-- Predict form -->
         <form method="POST" action="{{ url_for('predict') }}" enctype="multipart/form-data">
-            <input
-                type="file"
-                name="image"
-                id="imageInput"
-                accept="image/*"
-                required
-                onchange="previewImage(event)"
-            />
+            <input type="file" name="image" id="imageInput" accept="image/*" required onchange="previewImage(event)"/>
             <br />
             <button type="submit" class="button">Predict</button>
         </form>
@@ -45,7 +38,7 @@
 
     <div class="image-box">
         {% if image_data %}
-            <img id="preview" src="data:image/png;base64,{{ image_data }}" alt="Image Preview" />
+            <img id="preview" src="data:image/png;base64,{{ image_data }}" width="200" alt="Image Preview" />
         {% else %}
             <img id="preview" src="#" alt="Image Preview" style="display: none;" />
         {% endif %}
