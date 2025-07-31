@@ -53,16 +53,26 @@ Open your browser: http://127.0.0.1:5000
 📁 Project Structure
 
 ```Image-Classification-AI/
-├── Image/                     # Folder for example images or datasets
-├── __pycache__/               # Python cache files (auto-generated)
-├── data/
-│   └── FashionMNIST/
-│       └── raw/               # Raw dataset files (FashionMNIST dataset)
-├── templates/                 # Templates for web app or reports (if any)
-├── README.md                  # Project description and documentation
-├── app.py                    # Main application script (e.g., for running or serving the model)
-├── best_cnn_model.pt          # Saved trained CNN model weights
-├── cnn_model.py 
+├── ImageSample/                        # Folder for example images or datasets
+├── __pycache__/                        # Python cache files (auto-generated)
+├── model/
+│   ├── best_nn_model.keras             # Saved trained NN model weights
+│   └── best_cnn_model.keras            # Saved trained CNN model weights
+├── notebooks/
+│   ├── fashion_mnist_selim_ahmed.py    # Saved colab file as python
+│   └── Fashion_MNIST_Selim_Ahmed.ipynb # Saved colab file 
+├── static/                             # logo, style and other necessary
+│   ├── logo.png
+│   └── style.css
+├── templates/                          # Templates for web app or reports (if any)
+│   ├── index.html
+│   └── train.html
+├── templates/                 
+├── README.md                           # Project description and documentation
+├── app.py                              # Main application script (e.g., for running or serving the model)
+├── model_config.py                     
+├── train_model_cnn.py                  # CNN model training class
+└── train_model_nn.py                   # NN model training class
 ```
 
 🛠 Tech Stack
@@ -78,10 +88,12 @@ Open your browser: http://127.0.0.1:5000
 
 📸 Screenshots
 
-![Screenshot](https://github.com/debbrath/ImageClassification/blob/main/Image/2025-07-30%2017_16_57-Window.png)
-![Screenshot](https://github.com/debbrath/ImageClassification/blob/main/Image/2025-07-30%2017_17_31-Window.png)
-![Screenshot](https://github.com/debbrath/ImageClassification/blob/main/Image/2025-07-30%2017_18_02-Window.png)
-![Screenshot](https://github.com/debbrath/ImageClassification/blob/main/Image/2025-07-30%2017_18_23-Window.png)
+![Screenshot](https://github.com/Aronno1920/Fashion-Classifier-MNIST/blob/main/screenshot/Screenshot_1.png)
+![Screenshot](https://github.com/Aronno1920/Fashion-Classifier-MNIST/blob/main/screenshot/Screenshot_2.png)
+![Screenshot](https://github.com/Aronno1920/Fashion-Classifier-MNIST/blob/main/screenshot/Screenshot_3.png)
+![Screenshot](https://github.com/Aronno1920/Fashion-Classifier-MNIST/blob/main/screenshot/Screenshot_4.png)
+![Screenshot](https://github.com/Aronno1920/Fashion-Classifier-MNIST/blob/main/screenshot/Screenshot_5.png)
+![Screenshot](https://github.com/Aronno1920/Fashion-Classifier-MNIST/blob/main/screenshot/Screenshot_6.png)
 
 ✍️ Author
 
